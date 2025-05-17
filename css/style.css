@@ -345,6 +345,9 @@ p {
 /* =========================================
    Listagem de Autores (autores.html)
    ========================================= */
+/* =========================================
+   Listagem de Autores (autores.html)
+   ========================================= */
 .author-list {
   padding: 3rem 0;
 }
@@ -362,7 +365,7 @@ p {
 
 .author-list .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Largura mínima de 180px */
   gap: 2rem;
   padding: 2rem;
 }
@@ -394,8 +397,9 @@ p {
 .polaroid figcaption {
   font-size: 0.9rem;
   margin-top: 0.5rem;
-  color: var(--text); /* Corrigido aqui para usar a variável */
+  color: var(--text);
 }
+
 
 /* =========================================
    Página do Autor (autor.html)
@@ -1111,8 +1115,23 @@ list-style: none;
 }
 
 /* Para telas menores que 599px (smartphones menores) - Reforçando o alinhamento */
+/* Para telas menores que 600px (smartphones menores) */
 @media (max-width: 599px) {
-  .hero-actions {
-    align-items: center; /* Garante o alinhamento centralizado em telas menores ainda */
+  /* ... outros estilos para telas menores ... */
+
+  .author-list .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Reduzindo a largura mínima */
+    padding: 1rem; /* Reduzindo o padding da galeria */
+    gap: 1rem; /* Reduzindo o gap entre os polaroids */
+  }
+
+  .polaroid {
+    padding: 0.5rem; /* Reduzindo o padding do polaroid */
+    margin-bottom: 0.5rem; /* Reduzindo a margem inferior */
+  }
+
+  .polaroid figcaption {
+    font-size: 0.8rem; /* Reduzindo o tamanho da fonte da legenda */
+    margin-top: 0.3rem; /* Reduzindo a margem superior da legenda */
   }
 }
