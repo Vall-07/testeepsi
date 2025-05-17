@@ -1,0 +1,952 @@
+/* =========================================
+   Gerais - Cores Legíveis (Opção Livre - Final?)
+   ========================================= */
+:root {
+  --bg: #f8f9fa; /* Branco suave (levemente acinzentado) */
+  --text: #333; /* Cinza escuro (bom contraste) */
+  --primary: #007bff; /* Azul vibrante (destaque no claro) */
+  --secondary: #6c757d; /* Cinza médio (texto secundário) */
+  --accent: #28a745; /* Verde (destaque positivo) */
+  --muted: #e0e0e0; /* Cinza claro (separadores) */
+  --white: #fff;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --border-radius: 0.4rem;
+  --transition: all 0.3s ease-in-out;
+}
+
+[data-theme="dark"] {
+  --bg: #212529; /* Cinza escuro (base escura) */
+  --text: #f8f9fa; /* Branco suave (contraste no escuro) */
+  --primary: #5bc0de; /* Azul claro (destaque no escuro) */
+  --secondary: #adb5bd; /* Cinza claro (texto secundário no escuro) */
+  --accent: #90ee90; /* Verde claro (destaque positivo no escuro) */
+  --muted: #495057; /* Cinza escuro médio (separadores no escuro) */
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   Correções Específicas para Legibilidade
+   ========================================= */
+.polaroid figcaption {
+  color: var(--text); /* Garante que a legenda use a cor de texto do tema */
+}
+
+[data-theme="dark"] .polaroid figcaption {
+  color: var(--text); /* Garante que a legenda use a cor de texto do tema escuro */
+}
+
+/* =========================================
+   Reaplicando o CSS Completo com as Cores Atualizadas
+   ========================================= */
+/* (O restante do seu CSS `style.css` deve vir aqui, utilizando as variáveis de cor acima) */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.delay-4 {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   Cabeçalho (main-header)
+   ========================================= */
+.main-header {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--muted);
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo a {
+  color: inherit;
+}
+
+/* Navegação Principal */
+#main-nav {
+  display: none; /* Oculto por padrão em telas menores */
+}
+
+#main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+#main-nav ul li {
+  margin-left: 1.5rem;
+}
+
+#main-nav ul li:first-child {
+  margin-left: 0;
+}
+
+#main-nav ul li a {
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--text);
+  font-weight: 500;
+}
+
+#main-nav ul li a.active {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+#main-nav ul li a:hover {
+  color: var(--accent);
+}
+
+/* Ícones de Navegação (Tema) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: opacity 0.2s ease-in-out;
+}
+
+#theme-toggle:hover {
+  opacity: 0.8;
+}
+
+/* Botão de Menu (Responsivo) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle:focus {
+  outline: none;
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--secondary);
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* =========================================
+   Botões
+   ========================================= */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.primary-btn {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--primary);
+}
+
+.primary-btn:hover {
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+}
+
+.secondary-btn:hover {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.btn-link {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.btn-link:hover {
+  color: var(--accent);
+}
+
+.back-link {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* =========================================
+   Seção de Introdução (index.html)
+   ========================================= */
+.intro-section {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.intro-section h2 {
+  margin-bottom: 1.5rem;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: var(--white);
+  color: var(--text);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.card p {
+  margin-bottom: 1rem;
+}
+
+/* =========================================
+   Call to Action (index.html)
+   ========================================= */
+.call-to-action {
+  padding: 3rem 0;
+  text-align: center;
+  background-color: var(--muted);
+}
+
+/* =========================================
+   Listagem de Autores (autores.html)
+   ========================================= */
+.author-list {
+  padding: 3rem 0;
+}
+
+.author-list h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.author-list .subtitle {
+  color: var(--secondary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.author-list .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.author-card {
+  display: block;
+  text-align: center;
+}
+
+.polaroid {
+  background-color: var(--white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+[data-theme="dark"] .polaroid {
+  background-color: var(--bg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.polaroid img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.2rem;
+}
+
+.polaroid figcaption {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: var(--text); /* Corrigido aqui para usar a variável */
+}
+
+/* =========================================
+   Página do Autor (autor.html)
+   ========================================= */
+.author-page {
+  padding: 2rem 0;
+}
+
+.author-hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.author-hero img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--box-shadow);
+}
+
+.author-hero-info h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.author-hero-info .meta {
+  color: var(--secondary);
+  font-style: italic;
+}
+
+.author-navigation {
+  border-bottom: 1px solid var(--muted);
+  margin-bottom: 2rem;
+}
+
+.author-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  overflow-x: auto; /* Para navegação horizontal em telas menores */
+}
+
+.author-navigation ul li {
+  margin-right: 1.5rem;
+}
+
+.author-navigation ul li:last-child {
+  margin-right: 0;
+}
+
+.author-navigation ul li a {
+  display: block;
+  padding: 0.8rem 0;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.author-navigation ul li a:hover,
+.author-navigation ul li a.active {
+  color: var(--primary);
+}
+
+.author-section {
+  margin-bottom: 2.5rem;
+}
+
+.author-section h2 {
+  margin-bottom: 1rem;
+}
+
+.author-section ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.author-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+.back-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* =========================================
+   Listagem de Artigos (artigos.html)
+   ========================================= */
+.articles-list {
+  padding: 3rem 0;
+}
+
+.articles-list .articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.article-card {
+  background-color: var(--white);
+  color: var(--text);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  display: block; /* Alterado para block por padrão */
+}
+
+[data-theme="dark"] .article-card {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.article-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.article-card p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--secondary);
+}
+
+.article-card .btn-link {
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   Glossário (glossario.html)
+   ========================================= */
+.glossary {
+  padding: 3rem 0;
+}
+
+.glossary-search {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.glossary-search input[type="text"] {
+  padding: 0.8rem;
+  border: 1px solid var(--muted);
+  border-radius: var(--border-radius);
+  width: 80%;
+  max-width: 600px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.glossary-search input[type="text"]:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.25);
+}
+
+.glossary-list {
+list-style: none;
+  padding: 0;
+}
+
+.glossary-item {
+  background-color: var(--white);
+  color: var(--text);
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+[data-theme="dark"] .glossary-item {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.glossary-item strong {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* =========================================
+   História (historia.html)
+   ========================================= */
+.timeline-section {
+  padding: 3rem 0;
+}
+
+.timeline {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: var(--muted);
+  transform: translateX(-50%);
+}
+
+[data-theme="dark"] .timeline::before {
+  background-color: var(--muted);
+}
+
+.timeline-event {
+  margin: 2rem 0;
+  position: relative;
+}
+
+.timeline-event h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-left: calc(50% + 1rem);
+  text-align: left;
+}
+
+.timeline-event p {
+  padding-left: calc(50% + 1rem);
+  text-align: left;
+}
+
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  border: 2px solid var(--white);
+  box-shadow: var(--box-shadow);
+}
+
+[data-theme="dark"] .timeline-event::before {
+  background-color: var(--primary);
+  border: 2px solid var(--bg);
+  box-shadow: var(--box-shadow);
+}
+
+/* Eventos à esquerda da linha */
+.timeline-event:nth-child(even) h3,
+.timeline-event:nth-child(even) p {
+  text-align: right;
+  padding-left: 0;
+  padding-right: calc(50% + 1rem);
+}
+
+/* =========================================
+   Projetos (projetos.html)
+   ========================================= */
+.projects-list {
+  padding: 3rem 0;
+}
+
+.projects-list .grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Reutilizando o .card definido anteriormente */
+
+/* =========================================
+   Teorias (teorias.html)
+   ========================================= */
+.theories-list {
+  padding: 3rem 0;
+}
+
+/* Reutilizando o .grid-cards e .card definidos anteriormente */
+
+/* =========================================
+   Contato (contato.html)
+   ========================================= */
+.contact-section {
+  padding: 3rem 0;
+}
+
+.contact-form {
+  background-color: var(--white);
+  color: var(--text);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+[data-theme="dark"] .contact-form {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--muted);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+[data-theme="dark"] .contact-form input[type="text"],
+[data-theme="dark"] .contact-form input[type="email"],
+[data-theme="dark"] .contact-form textarea {
+  border-color: var(--muted);
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.25);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button[type="submit"] {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: var(--accent);
+}
+
+[data-theme="dark"] .contact-form button[type="submit"] {
+  background-color: var(--primary);
+  color: var(--text);
+  border: 1px solid var(--primary);
+}
+
+[data-theme="dark"] .contact-form button[type="submit"]:hover {
+  background-color: transparent;
+  color: var(--primary);
+}
+
+/* =========================================
+   Rodapé (main-footer)
+   ========================================= */
+.main-footer {
+  background-color: var(--bg);
+  color: var(--secondary);
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--muted);
+  font-size: 0.9rem;
+}
+
+[data-theme="dark"] .main-footer {
+  background-color: var(--bg);
+  color: var(--secondary);
+  border-top-color: var(--muted);
+}
+
+/* =========================================
+   Página de Teoria (theory.html - Estilos)
+   ========================================= */
+.theory-page {
+  padding: 2rem 0;
+}
+
+.theory-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.theory-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.theory-hero .subtitle {
+  color: var(--secondary);
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.theory-section {
+  margin-bottom: 2.5rem;
+  padding: 0 1.5rem; /* Adiciona um pouco de padding nas laterais do conteúdo */
+}
+
+.theory-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--muted);
+  padding-bottom: 0.5rem;
+}
+
+.theory-section h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.theory-section ul,
+.theory-section ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.theory-section li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.theory-section p {
+  line-height: 1.7;
+}
+
+.back-link {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* =========================================
+   Responsividade
+   ========================================= */
+@media (max-width: 768px) {
+  .main-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  .nav-toggle {
+    display: block;
+    margin-left: auto; /* Alinha o botão à direita */
+  }
+
+  #main-nav {
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  #main-nav.open {
+    display: block;
+  }
+
+  #main-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #main-nav ul li {
+    margin-left: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  #main-nav ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions a {
+    width: 100%;
+  }
+
+  .author-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .author-hero img {
+    margin-bottom: 1rem;
+  }
+
+  .author-navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .author-navigation ul li {
+    margin-right: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline::before {
+    left: 1rem;
+  }
+
+  .timeline-event h3,
+  .timeline-event p,
+  .timeline-event:nth-child(even) h3,
+  .timeline-event:nth-child(even) p {
+    padding-left: 3rem;
+    padding-right: 1rem;
+    text-align: left;
+  }
+
+  .timeline-event::before,
+  .timeline-event:nth-child(even)::before {
+    left: 1rem;
+    transform: translateX(0);
+  }
+}
