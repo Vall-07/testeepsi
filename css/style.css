@@ -119,7 +119,7 @@ p {
   padding: 1rem 0;
   border-bottom: 1px solid var(--muted);
   box-shadow: var(--box-shadow);
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 100;
 }
@@ -948,5 +948,171 @@ list-style: none;
   .timeline-event:nth-child(even)::before {
     left: 1rem;
     transform: translateX(0);
+  }
+}
+/* =========================================
+   Responsividade - Ajustes Adicionais
+   ========================================= */
+
+/* Para telas menores que 600px (smartphones menores) */
+@media (max-width: 599px) {
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .intro-section {
+    padding: 2rem 1rem;
+  }
+
+  .grid-cards {
+    grid-template-columns: 1fr; /* Um card por linha */
+  }
+
+  .author-list .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    padding: 1rem;
+  }
+
+  .articles-list {
+    padding: 2rem 1rem;
+  }
+
+  .articles-list .articles-grid {
+    grid-template-columns: 1fr; /* Um artigo por linha */
+  }
+
+  .contact-section {
+    padding: 2rem 1rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .theory-section {
+    padding: 0 1rem;
+  }
+
+  .theory-hero h1 {
+    font-size: 2rem;
+  }
+
+  .theory-hero .subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* Para telas entre 600px e 768px (tablets menores) - Alguns ajustes já estão no bloco anterior */
+@media (min-width: 600px) and (max-width: 768px) {
+  .grid-cards {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dois cards em alguns casos */
+  }
+
+  .articles-list .articles-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dois artigos em alguns casos */
+  }
+}
+
+/* Para telas maiores que 1200px (desktops grandes) - Opcional, para limitar largura máxima se necessário */
+/* @media (min-width: 1201px) {
+  .container {
+    max-width: 1400px;
+  }
+} */
+ /* =========================================
+   Cabeçalho (main-header) - Correções Responsivas
+   ========================================= */
+.main-header .container {
+  display: flex;
+  justify-content: space-between; /* Mantém o logo à esquerda e as ações à direita em telas maiores */
+  align-items: center;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* =========================================
+   Hero Section - Correção Responsiva dos Botões
+   ========================================= */
+@media (max-width: 768px) {
+  .main-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  .nav-toggle {
+    display: block;
+    margin-left: auto; /* Alinha o botão à direita */
+  }
+
+  #main-nav {
+    display: none;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  #main-nav.open {
+    display: block;
+  }
+
+  #main-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #main-nav ul li {
+    margin-left: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  #main-nav ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center; /* Centraliza os botões no modo coluna */
+  }
+
+  .hero-actions a {
+    width: 100%;
+    margin-bottom: 0.5rem; /* Adiciona um pouco de espaço entre os botões */
+  }
+
+  .hero-actions a:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Para telas menores que 599px (smartphones menores) - Reforçando o alinhamento */
+@media (max-width: 599px) {
+  .hero-actions {
+    align-items: center; /* Garante o alinhamento centralizado em telas menores ainda */
   }
 }
