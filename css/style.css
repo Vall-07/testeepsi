@@ -198,7 +198,6 @@ p {
 
 /* Botão de Menu (Responsivo) */
 .nav-toggle {
-  display: none;
   background: none;
   border: none;
   color: var(--text);
@@ -1049,24 +1048,39 @@ list-style: none;
    Hero Section - Correção Responsiva dos Botões
    ========================================= */
 @media (max-width: 768px) {
+  .main-header {
+    position: relative;
+  }
+
   .main-header .container {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .logo {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
   .nav-toggle {
     display: block;
-    margin-left: auto; /* Alinha o botão à direita */
+    margin-left: auto;
   }
 
   #main-nav {
     display: none;
-    width: 100%;
-    margin-top: 1rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--bg);
+    z-index: 101;
+    padding: 1rem;
+    box-shadow: var(--box-shadow);
+    width: 50%; /* Ocupa 50% da largura do cabeçalho */
+    min-width: 200px; /* Largura mínima para garantir legibilidade */
+    align-items: flex-start;
+    text-align: right;
   }
 
   #main-nav.open {
@@ -1075,17 +1089,28 @@ list-style: none;
 
   #main-nav ul {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
+    padding: 0;
+    width: 100%; /* Ocupa a largura do menu (50% do cabeçalho) */
   }
 
   #main-nav ul li {
-    margin-left: 0;
+    margin-left: auto;
     margin-bottom: 0.8rem;
+    width: auto;
+  }
+
+  #main-nav ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-align: right;
   }
 
   #main-nav ul li:last-child {
     margin-bottom: 0;
   }
+
+
 
   .hero {
     padding: 3rem 1rem;
@@ -1134,4 +1159,61 @@ list-style: none;
     font-size: 0.8rem; /* Reduzindo o tamanho da fonte da legenda */
     margin-top: 0.3rem; /* Reduzindo a margem superior da legenda */
   }
+}
+
+/* =========================================
+   Responsividade - Telas Maiores (Alinhamento dos Botões)
+   ========================================= */
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  #main-nav {
+    display: flex; /* Usar flexbox para alinhar os itens */
+    width: auto;
+    margin-top: 0;
+    align-items: center; /* Alinha verticalmente os itens de #main-nav (a ul) */
+  }
+
+  #main-nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Alinha verticalmente os itens da lista (os li) */
+  }
+
+  #main-nav ul li {
+    margin-left: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  #main-nav ul li a {
+    display: block; /* Mantém os links como blocos para facilitar o clique */
+    padding: 0.5rem 0; /* Ajuste o padding vertical conforme necessário */
+  }
+
+  #main-nav ul li:first-child {
+    margin-left: 0;
+  }
+
+  .main-header .container {
+    display: flex; /* Garante que o container do cabeçalho também é flex */
+    justify-content: space-between;
+    align-items: center; /* Alinha verticalmente os elementos dentro do cabeçalho */
+  }
+
+  .logo {
+    margin-bottom: 0;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+  }
+
+  /*#main-nav ul .theme-toggle-mobile {
+    display: none;
+  }*/
+  
 }
